@@ -1,0 +1,109 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class GestionTareasYcursos {
+    static Scanner entrada = new Scanner(System.in);
+    private ArrayList<Curso> cursos = new ArrayList<>();
+
+    public static void main(String[] args) {
+        GestionTareasYcursos sistema = new GestionTareasYcursos();
+        sistema.menu();
+    }
+
+    public void menu() {
+
+        while (true) {
+            System.out.println("============Menu============");
+            System.out.println("1. Crear Curso");
+            System.out.println("2. Agregar Tarea a Curso");
+            System.out.println("3. Mostrar Crusos y Tareas");
+            System.out.println("4. Salir del programa");
+            System.out.println("============================");
+            System.out.println();
+            System.out.println("Ingrese una opcion: ");
+            int opc = entrada.nextInt();
+            entrada.nextLine();
+
+            switch (opc) {
+                case 1:
+                    crearCurso();
+                    break;
+                case 2:
+                    agregarTareaACurso();
+                    break;
+                case 3:
+                    mostrarCurso();
+                    break;
+                case 4:
+                    System.out.println("Saliendo del Sistema");
+                    return;
+            }
+        }
+    }
+
+
+    public void crearCurso(){
+        System.out.println("Ingrese nombre del curso: ");
+        String nombre = entrada.nextLine();
+
+        System.out.print("Ingrese el codigo del curso: ");
+        String codigo = entrada.nextLine();
+
+        System.out.print("Ingrese el tutor del curso: ");
+        String tutor = entrada.nextLine();
+
+        Curso curso = new Curso(nombre, codigo, tutor);
+        cursos.add(curso);
+    }
+
+    public void agregarTareaACurso(){
+
+        System.out.println("Ingrese el codigo del curso a asignar la tarea: ");
+        String codigo = entrada.nextLine();
+
+        Curso cursoencontrado = buscarcursoporcodigo(codigo);
+
+        if (cursoencontrado == null){
+            System.out.println("Error: EL Curso no existe.");
+            return;
+        }
+
+        System.out.print("Ingrese el titulo de la tarea: ");
+        String titulo = entrada.nextLine();
+
+        System.out.print("Ingrese la descripcion de la tarea: ");
+        String descripcion = entrada.nextLine();
+
+        System.out.print("Ingrese la fecha de entrega: ");
+        String fechaEntrega = entrada.nextLine();
+
+        Tarea nuevaTarea = new Tarea(titulo, descripcion, fechaEntrega);
+        cursoencontrado.agregarTarea(nuevaTarea);
+
+        System.out.println("Tarea agregada correctamente al curso.");
+    }
+
+    public Curso buscarcursoporcodigo(String codigo){
+        for (int i=0; i<cursos.size(); i++){
+            if (cursos.get(i).getCodigo().equalsIgnoreCase(codigo)){
+                return cursos.get(i);
+            }
+        }
+        return null;
+    }
+
+
+
+    public void mostrarCurso(){
+
+        if (cursos.isEmpty()) {
+            System.out.println("No hay cursos registrados.");
+            return;
+        }
+        for (int i = 0; i < cursos.size(); i++) {
+            System.out.println(cursos.get(i));
+            cursos.get(i).mostrarTareas();
+            System.out.println();
+        }
+    }
+}
