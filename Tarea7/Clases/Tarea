@@ -1,0 +1,42 @@
+public class Tarea {
+    private String titulo;
+    private String descripcion;
+    private String fechaentrega;
+
+    public Tarea(String titulo, String descripcion, String fechaentrega){
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.fechaentrega = fechaentrega;
+    }
+
+    public String getTitulo(){
+        return titulo;
+    }
+
+    public void setTitulo(String titulo){
+        this.titulo = titulo;
+    }
+
+    public String getDescripcion(){
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion){
+        this.descripcion = descripcion;
+    }
+
+    public String getFechaentrega(){
+        return fechaentrega;
+    }
+
+    public void setFechaentrega(String fechaentrega){
+        this.fechaentrega = fechaentrega;
+    }
+
+    @Override
+    public String toString() {
+        return "Tarea: " + titulo + " | Descripcion: " + descripcion + " | Fecha de entrega: " + fechaentrega;
+    }
+}
+
+

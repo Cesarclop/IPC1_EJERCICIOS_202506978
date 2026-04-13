@@ -1,0 +1,63 @@
+
+import java.util.ArrayList;
+
+public class Curso {
+    private String nombre;
+    private String codigo;
+    private String tutor;
+    private ArrayList<Tarea> tareas;
+    //constructor
+    public Curso(String nombre, String codigo, String tutor){
+        this.nombre = nombre;
+        this.codigo = codigo;
+        this.tutor = tutor;
+        this.tareas = new ArrayList<>();
+    }
+
+    public String getNombre(){
+        return nombre;
+    }
+
+    public void setNombre(String nombre){
+        this.nombre = nombre;
+    }
+
+    public String getCodigo(){
+        return codigo;
+    }
+
+    public void setCodigo(String codigo){
+        this.codigo = codigo;
+    }
+
+    public String getTutor(){
+        return tutor;
+    }
+
+    public void setTutor(String tutor){
+        this.tutor = tutor;
+    }
+
+    public void agregarTarea(Tarea tarea){
+        tareas.add(tarea);
+    }
+
+    public ArrayList<Tarea> getTareas(){
+        return tareas;
+    }
+
+    public void mostrarTareas() {
+        if (tareas.isEmpty()) {
+            System.out.println("  No tiene tareas asignadas.");
+        } else {
+            for (int i = 0; i < tareas.size(); i++) {
+                System.out.println("  " + tareas.get(i));
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Curso: " + nombre + " | Codigo: " + codigo + " | Tutor: " + tutor;
+    }
+}

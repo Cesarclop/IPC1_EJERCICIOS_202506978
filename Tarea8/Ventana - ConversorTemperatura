@@ -1,0 +1,125 @@
+
+package com.mycompany.tarea8;
+
+import javax.swing.JOptionPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class ConversorTemperatura extends javax.swing.JFrame {
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ConversorTemperatura.class.getName());
+
+   
+    public ConversorTemperatura() {
+        initComponents();
+    }
+
+    
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldCelsius = new javax.swing.JTextField();
+        jButtonKelvin = new javax.swing.JButton();
+        jButtonFahrenheit = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel1.setText("   CONVERSOR DE TEMPERATURAS");
+
+        jLabel2.setText("Ingresar temperatura (En grados Celsius):");
+
+        jTextFieldCelsius.addActionListener(this::jTextFieldCelsiusActionPerformed);
+
+        jButtonKelvin.setText("Celsius a Kelvin");
+        jButtonKelvin.addActionListener(this::jButtonKelvinActionPerformed);
+
+        jButtonFahrenheit.setText("Celsius a Fahrenheit");
+        jButtonFahrenheit.addActionListener(this::jButtonFahrenheitActionPerformed);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(101, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jTextFieldCelsius, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(150, 150, 150))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(162, 162, 162))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButtonFahrenheit, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonKelvin, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(131, 131, 131))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldCelsius, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonFahrenheit, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonKelvin, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(91, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    private void jTextFieldCelsiusActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+
+    }                                                 
+
+    private void jButtonKelvinActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        try {
+            double celsius = Double.parseDouble(jTextFieldCelsius.getText().trim());
+            double kelvin = celsius + 273.15;
+            JOptionPane.showMessageDialog(this,String.format("Resultado: %.2f K", kelvin),"Conversión a Kelvin",JOptionPane.INFORMATION_MESSAGE);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this,"Ingrese un valor numerico valido.","Error de entrada",JOptionPane.ERROR_MESSAGE);
+        }
+    }                                             
+
+    private void jButtonFahrenheitActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+        try {
+            double celsius = Double.parseDouble(jTextFieldCelsius.getText().trim());
+            double fahrenheit = celsius * 9.0 / 5.0 + 32;
+            
+            
+            JOptionPane.showMessageDialog(this,String.format("Resultado: %.2f °F", fahrenheit),"Conversión a Fahrenheit",JOptionPane.INFORMATION_MESSAGE);
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this,"Ingrese un valor numeico valido.","Error de entrada",JOptionPane.ERROR_MESSAGE);
+        }
+    }                                                 
+
+    
+    public static void main(String args[]) {
+       
+        java.awt.EventQueue.invokeLater(() -> new ConversorTemperatura().setVisible(true));
+        
+    }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton jButtonFahrenheit;
+    private javax.swing.JButton jButtonKelvin;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField jTextFieldCelsius;
+    // End of variables declaration                   
+}
